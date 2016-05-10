@@ -47,6 +47,120 @@ namespace PeopleProTraining.Dal.Infrastructure
         #endregion
 
 
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return p_context.Employees;
+        }
+
+        public Employee GetEmployeeById(int id)
+        {
+            return GetAllEmployees().SingleOrDefault(e => e.Id == id);
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            p_context.Employees.Add(employee);
+            p_context.SaveChanges();
+        }
+
+        public void InsertEmployee(Employee employee)
+        {
+            p_context.Employees.Add(employee);
+        }
+
+
+        public void SaveEmployee(Employee employee)
+        {
+            DoSave(p_context.Employees, employee, employee.Id, e => e.Id == employee.Id);
+        }
+
+        public void DeleteEmployee(Employee employee)
+        {
+            if (employee == null || employee.Id <= 0)
+            {
+                return;
+            }
+
+            p_context.Employees.Remove(employee);
+            p_context.SaveChanges();
+        }
+
+        // Departments/////////////////////////////////////////////////////////////////////////////////////////
+        public IEnumerable<Department> GetAllDepartments()
+        {
+            return p_context.Departments;
+        }
+
+        public Department GetDepartmentById(int id)
+        {
+            return GetAllDepartments().SingleOrDefault(e => e.Id == id);
+        }
+
+        public void UpdateDepartment(Department department)
+        {
+            p_context.Departments.Add(department);
+            p_context.SaveChanges();
+        }
+
+        public void InsertDepartment(Department department)
+        {
+            p_context.Departments.Add(department);
+        }
+
+        public void SaveDepartment(Department department)
+        {
+            DoSave(p_context.Departments, department, department.Id, e => e.Id == department.Id);
+        }
+
+        public void DeleteDepartment(Department department)
+        {
+            if (department == null || department.Id <= 0)
+            {
+                return;
+            }
+
+            p_context.Departments.Remove(department);
+            p_context.SaveChanges();
+        }
+        // Building////////////////////////////////////////////////////////////////////////////////////////
+
+
+        public IEnumerable<Building> GetAllBuildings()
+        {
+            return p_context.Buildings;
+        }
+
+        public Building GetBuildingById(int id)
+        {
+            return GetAllBuildings().SingleOrDefault(e => e.Id == id);
+        }
+
+        public void UpdateBuilding(Building building)
+        {
+            p_context.Buildings.Add(building);
+            p_context.SaveChanges();
+        }
+
+        public void InsertBuilding(Building building)
+        {
+            p_context.Buildings.Add(building);
+        }
+
+        public void SaveBuilding(Building building)
+        {
+            DoSave(p_context.Buildings, building, building.Id, e => e.Id == building.Id);
+        }
+
+        public void DeleteBuilding(Building building)
+        {
+            if (building == null || building.Id <= 0)
+            {
+                return;
+            }
+
+            p_context.Buildings.Remove(building);
+            p_context.SaveChanges();
+        }
 
         /// <summary>
         /// Abstracts the saving process for an item in the Db Context.

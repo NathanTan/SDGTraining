@@ -26,5 +26,7 @@ namespace PeopleProTraining.Dal.Models
         }
     
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Building> Buildings { get; set; }
     }
 }

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PeopleProModels" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="PeopleProModelsContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="PeopleProModels.Employee" />
+    <EntitySet Name="Departments" EntityType="PeopleProModels.Department" />
+    <EntitySet Name="Buildings" EntityType="PeopleProModels.Building" />
+    <AssociationSet Name="BuildingDepartment" Association="PeopleProModels.BuildingDepartment">
+      <End Role="Building" EntitySet="Buildings" />
+      <End Role="Department" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentEmployee" Association="PeopleProModels.DepartmentEmployee">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="true" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="PeopleProModels.DepartmentEmployee" FromRole="Employee" ToRole="Department" />
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Building" Relationship="PeopleProModels.BuildingDepartment" FromRole="Department" ToRole="Building" />
+    <Property Name="BuildingId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="PeopleProModels.DepartmentEmployee" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Departments" Relationship="PeopleProModels.BuildingDepartment" FromRole="Building" ToRole="Department" />
+  </EntityType>
+  <Association Name="BuildingDepartment">
+    <End Type="PeopleProModels.Building" Role="Building" Multiplicity="1" />
+    <End Type="PeopleProModels.Department" Role="Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="BuildingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentEmployee">
+    <End Type="PeopleProModels.Department" Role="Department" Multiplicity="1" />
+    <End Type="PeopleProModels.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
