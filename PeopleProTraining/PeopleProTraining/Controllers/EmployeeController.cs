@@ -18,6 +18,10 @@ namespace PeopleProTraining.Controllers
         {
             m_repo = repo;
         }
+        public EmployeeController(PeopleProRepo peopleProRepo)
+        {
+            this.peopleProRepo = peopleProRepo;
+        }
         // GET: Employee
         public ActionResult Index(string sortOrder, string CurrentSort, int? page)
         {
@@ -38,6 +42,8 @@ namespace PeopleProTraining.Controllers
             buildings.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
 
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
+
+            return View("Index");
         }
 
         // GET: Employee/Details/5
