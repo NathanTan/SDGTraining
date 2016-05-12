@@ -39,7 +39,6 @@ namespace PeopleProTraining.Controllers
             buildings.OrderBy(b => b.Id).OrderBy(b => b.Name);
 
             sortOrder = string.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
-            return View("Index");
         }
         public DepartmentController(PeopleProRepo peopleProRepo)
         {
