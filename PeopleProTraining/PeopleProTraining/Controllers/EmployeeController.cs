@@ -38,6 +38,7 @@ namespace PeopleProTraining.Controllers
             buildings.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
 
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
+            return View("Index");
         }
 
         // GET: Employee/Details/5

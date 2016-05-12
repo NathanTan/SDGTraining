@@ -7,3 +7,12 @@ C:\Users\tann\Documents\Visual Studio 2015\Projects\FLPeoplePro\PeopleProTrainin
 C:\Users\tann\Documents\Visual Studio 2015\Projects\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.csprojResolveAssemblyReference.cache
 C:\Users\tann\Documents\Visual Studio 2015\Projects\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.dll
 C:\Users\tann\Documents\Visual Studio 2015\Projects\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.pdb
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Core.dll
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Core.pdb
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Dal.dll
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\bin\Debug\EntityFramework.dll
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Dal.pdb
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\bin\Debug\EntityFramework.xml
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.csprojResolveAssemblyReference.cache
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.dll
+C:\Users\tann\Source\Repos\SDGTraining\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.pdb
