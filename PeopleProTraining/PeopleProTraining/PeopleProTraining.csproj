@@ -167,6 +167,7 @@
     <Compile Include="Controllers\BuildingController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeesTestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,6 +193,11 @@
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Detials.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\EmployeesTest\Create.cshtml" />
+    <Content Include="Views\EmployeesTest\Delete.cshtml" />
+    <Content Include="Views\EmployeesTest\Details.cshtml" />
+    <Content Include="Views\EmployeesTest\Edit.cshtml" />
+    <Content Include="Views\EmployeesTest\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

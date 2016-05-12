@@ -1,5 +1,5 @@
-﻿
-@{
+﻿@model PeopleProTraining.Dal.Models.Employee
+
     ViewBag.Title = "Index";
 }
 
@@ -9,3 +9,12 @@
 <h3>Welcome!</h3>
 
 <p>This site is for...</p>
+
+
+
+<div>
+    @Html.ActionLink("List of employees", "Index", "Employees")<br />
+    @Html.ActionLink("List of departments", "Index", "Departments")<br />
+    @Html.ActionLink("List of buildings", "Index", "Buildings")<br />
+    @Html.ActionLink("Test", "Index", "EmployeesTest")
+</div>
