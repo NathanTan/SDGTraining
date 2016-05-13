@@ -138,6 +138,7 @@ namespace PeopleProTraining.Dal.Infrastructure
         public void UpdateBuilding(Building building)
         {
             p_context.Buildings.Add(building);
+            //p_context.Buildings.Delete(building);
             p_context.SaveChanges();
         }
 

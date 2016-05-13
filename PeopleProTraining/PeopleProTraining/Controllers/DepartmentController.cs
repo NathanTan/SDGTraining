@@ -20,11 +20,11 @@ namespace PeopleProTraining.Controllers
             m_repo = repo;
         }
         // GET: Department
-        public ActionResult Index(string sortOrder, string CurrentSort, int? page)
+        public ActionResult Index()
         {
-            IEnumerable<Department> buildings = m_repo.GetAllDepartments();
+            IEnumerable<Department> departments = m_repo.GetAllDepartments();
 
-            if (!buildings.Any())
+            if (!departments.Any())
             {
                 //If there are no buildings, we should provide the ability to create them?
                 return RedirectToAction("Create");
@@ -32,15 +32,7 @@ namespace PeopleProTraining.Controllers
 
             //paginate buildings, what if there are 10000, do we want the user to scroll through all of that?
             //look up IPagedList<T>
-            int pageSize = 5;
-            int pageIndex = 1;
-            pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
-
-            buildings.OrderBy(b => b.Id).OrderBy(b => b.Name);
-
-            sortOrder = string.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
-
-            return View("Index");
+            return View(departments.ToList());
         }
   /*      public DepartmentController(PeopleProRepo peopleProRepo)
         {

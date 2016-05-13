@@ -191,13 +191,16 @@
     <Content Include="Views\Department\Details.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
-    <Content Include="Views\Employee\Detials.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\EmployeesTest\Create.cshtml" />
     <Content Include="Views\EmployeesTest\Delete.cshtml" />
     <Content Include="Views\EmployeesTest\Details.cshtml" />
     <Content Include="Views\EmployeesTest\Edit.cshtml" />
     <Content Include="Views\EmployeesTest\Index.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Building\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

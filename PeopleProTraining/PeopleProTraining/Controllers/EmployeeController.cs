@@ -23,7 +23,7 @@ namespace PeopleProTraining.Controllers
             this.peopleProRepo = peopleProRepo;
         }            */
         // GET: Employee
-        public ActionResult Index(string sortOrder, string CurrentSort, int? page)
+        public ActionResult Index()
         {
             IEnumerable<Employee> employees = m_repo.GetAllEmployees();
 
@@ -35,13 +35,13 @@ namespace PeopleProTraining.Controllers
 
             //paginate buildings, what if there are 10000, do we want the user to scroll through all of that?
             //look up IPagedList<T>
-            int pageSize = 5;
-            int pageIndex = 1;
-            pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            //int pageSize = 5;
+           // int pageIndex = 1;
+           // pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
 
-            employees.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
+           // employees.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
 
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
+           // sortOrder = String.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
 
             return View(employees.ToList());
         }

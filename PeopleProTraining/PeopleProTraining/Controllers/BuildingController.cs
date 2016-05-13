@@ -26,7 +26,7 @@ namespace PeopleProTraining.Controllers
 
         /* public ActionResult Index(string sortOrder, string CurrentSort, int? page)
          {}*/
-        public ActionResult Index(string sortOrder, string CurrentSort, int? page)
+        public ActionResult Index()
         {
             IEnumerable<Building> buildings = m_repo.GetAllBuildings();
 
@@ -38,14 +38,8 @@ namespace PeopleProTraining.Controllers
 
             //paginate buildings, what if there are 10000, do we want the user to scroll through all of that?
             //look up IPagedList<T>
-            int pageSize = 5;
-            int pageIndex = 1;
-            pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
 
-            buildings.OrderBy(b => b.Id).OrderBy(b => b.Name);
-
-            sortOrder = string.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
-            return View("Index");
+            return View(buildings.ToList());
         }
   /*      public ActionResult Index()
         {
@@ -62,7 +56,7 @@ namespace PeopleProTraining.Controllers
         public ActionResult Create()
         {
             ViewBag.Buildings = new SelectList(m_repo.GetAllBuildings(), "Id", "Name");
-            return View();
+            return View("Index");
         }
 
         // POST: Building/Create
@@ -99,6 +93,10 @@ namespace PeopleProTraining.Controllers
             {
                 // TODO: Add update logic here
                 m_repo.UpdateBuilding(building);
+                //add building
+                //delete building
+                
+
                 return RedirectToAction("Index");
             }
             catch

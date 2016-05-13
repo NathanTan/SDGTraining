@@ -5,7 +5,7 @@
     }
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
 <h2>FLPeoplePro</h2>
@@ -18,9 +18,8 @@
 
 
 <div>
-    @Html.ActionLink("List of employees", "Index", "Employees")<br />
-    @Html.ActionLink("List of departments", "Index", "Departments")<br />
-    @Html.ActionLink("List of buildings", "Index", "Buildings")<br />
-    @Html.ActionLink("Test", "Index", "tempController")   <br />
+    @Html.ActionLink("List of employees", "Index", "Employee")<br />
+    @Html.ActionLink("List of departments", "Index", "Department")<br />
+    @Html.ActionLink("List of buildings", "Index", "Building")<br />
     @Html.ActionLink("EmployeesTest/Index", "Index", "EmployeesTest")
 </div>
