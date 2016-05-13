@@ -25,9 +25,9 @@ namespace PeopleProTraining.Controllers
         // GET: Employee
         public ActionResult Index(string sortOrder, string CurrentSort, int? page)
         {
-            IEnumerable<Employee> buildings = m_repo.GetAllEmployees();
+            IEnumerable<Employee> employees = m_repo.GetAllEmployees();
 
-            if (!buildings.Any())
+            if (!employees.Any())
             {
                 //If there are no buildings, we should provide the ability to create them?
                 return RedirectToAction("Create");
@@ -39,11 +39,11 @@ namespace PeopleProTraining.Controllers
             int pageIndex = 1;
             pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
 
-            buildings.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
+            employees.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
 
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
 
-            return View("Index");
+            return View(employees.ToList());
         }
 
         // GET: Employee/Details/5

@@ -68,7 +68,7 @@
     <Compile Include="Infrastructure\PeopleProRepo.cs" />
     <Compile Include="Interfaces\IPeopleProContext.cs" />
     <Compile Include="Interfaces\IPeopleProRepo.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Employee1212.cs" />
     <Compile Include="PeopleProModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -15,6 +15,7 @@ namespace PeopleProTraining
         {
 
             var tempController = new EmployeesTestController(new PeopleProRepo());
+         //   var tController = new EmployeeController(new PeopleProRepo());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
