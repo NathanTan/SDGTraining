@@ -12,16 +12,16 @@ namespace PeopleProTraining.Controllers
     public class EmployeeController : Controller
     {
         private IPeopleProRepo m_repo;
-        private PeopleProRepo peopleProRepo;
+       // private PeopleProRepo peopleProRepo;
         public EmployeeController() : this(new PeopleProRepo()) { }
         public EmployeeController(IPeopleProRepo repo)
         {
             m_repo = repo;
         }
-        public EmployeeController(PeopleProRepo peopleProRepo)
+   /*     public EmployeeController(PeopleProRepo peopleProRepo)
         {
             this.peopleProRepo = peopleProRepo;
-        }
+        }            */
         // GET: Employee
         public ActionResult Index(string sortOrder, string CurrentSort, int? page)
         {

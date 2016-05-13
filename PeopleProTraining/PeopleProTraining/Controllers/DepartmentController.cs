@@ -13,7 +13,7 @@ namespace PeopleProTraining.Controllers
     public class DepartmentController : Controller
     {
         private IPeopleProRepo m_repo;
-        private PeopleProRepo peopleProRepo;
+      //  private PeopleProRepo peopleProRepo;
         public DepartmentController() : this(new PeopleProRepo()) { }
         public DepartmentController(IPeopleProRepo repo)
         {
@@ -42,10 +42,10 @@ namespace PeopleProTraining.Controllers
 
             return View("Index");
         }
-        public DepartmentController(PeopleProRepo peopleProRepo)
+  /*      public DepartmentController(PeopleProRepo peopleProRepo)
         {
             this.peopleProRepo = peopleProRepo;
-        }
+        }            */
 
 
         // GET: Department/Details/5

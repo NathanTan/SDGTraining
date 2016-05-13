@@ -14,18 +14,19 @@ namespace PeopleProTraining.Controllers
     public class EmployeesTestController : Controller
     {
         private IPeopleProRepo m_repo;
-        private PeopleProRepo peopleProRepo;
+        //private PeopleProRepo peopleProRepo;
         public EmployeesTestController() : this(new PeopleProRepo()) { }
+      
         public EmployeesTestController(IPeopleProRepo repo)
         {
             m_repo = repo;
         }
 
-        public EmployeesTestController(PeopleProRepo peopleProRepo)
+     /*   public EmployeesTestController(PeopleProRepo peopleProRepo)
         {
 
             this.peopleProRepo = peopleProRepo;
-        }
+        }           */
 
 
         // GET: EmployeesTest
@@ -59,6 +60,7 @@ namespace PeopleProTraining.Controllers
         // GET: EmployeesTest/Create
         public ActionResult Create()
         {
+          //  var m_repo = new EmployeesTestController(new PeopleProRepo());
             ViewBag.DepartmentId = new SelectList(m_repo.GetAllDepartments(), "Id", "Name");
             return View();
         }

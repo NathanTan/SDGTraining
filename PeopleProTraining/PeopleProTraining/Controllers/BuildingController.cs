@@ -12,17 +12,17 @@ namespace PeopleProTraining.Controllers
     public class BuildingController : Controller
     {
         private IPeopleProRepo m_repo;
-        private PeopleProRepo peopleProRepo;
+   //     private PeopleProRepo peopleProRepo;
         public BuildingController() : this(new PeopleProRepo()) { }
         public BuildingController(IPeopleProRepo repo)
         {
             m_repo = repo;
         }
         // GET: Building
-        public BuildingController(PeopleProRepo peopleProRepo)
+    /*    public BuildingController(PeopleProRepo peopleProRepo)
         {
             this.peopleProRepo = peopleProRepo;
-        }
+        }          */
 
         /* public ActionResult Index(string sortOrder, string CurrentSort, int? page)
          {}*/

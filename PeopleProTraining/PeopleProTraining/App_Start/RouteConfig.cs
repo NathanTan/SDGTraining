@@ -27,6 +27,25 @@ namespace PeopleProTraining
                 url: "EmployeesTest/Index", 
                 defaults: new { controller = "EmployeesTest", action = "Index" }
 );
+        /*
+            routes.MapRoute(       
+                name: "Employees",   
+                url: "{controller}/{action}",   
+                defaults: new { controller = "Employees", action = "Index" }
+
+);
+
+            routes.MapRoute(       
+                name: "Department",       
+                url: "{controller}/{action}",   
+                defaults: new { controller = "Department", action = "Index" }
+);
+
+            routes.MapRoute(  
+                name: "Building",
+                url: "{controller}/{action}", 
+                defaults: new { controller = "Building", action = "Index" }
+);               */
             routes.MapRoute(
                 name: "Default",
                  url: "{controller}/{action}/{id}",
