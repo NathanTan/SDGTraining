@@ -15,7 +15,7 @@ namespace PeopleProTraining.Dal.Infrastructure
         private IPeopleProContext p_context;
         private bool p_disposed;
 
-        public PeopleProRepo() : this(new PeopleProContext()) { }
+        public PeopleProRepo() : this(new PeopleProContext()) {}
 
         public PeopleProRepo(IPeopleProContext context)
         {

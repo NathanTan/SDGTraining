@@ -1,5 +1,10 @@
 ﻿@model PeopleProTraining.Dal.Models.Employee
 
+@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -16,5 +21,8 @@
     @Html.ActionLink("List of employees", "Index", "Employees")<br />
     @Html.ActionLink("List of departments", "Index", "Departments")<br />
     @Html.ActionLink("List of buildings", "Index", "Buildings")<br />
-    @Html.ActionLink("Test", "Index", "EmployeesTest")
+    @Html.ActionLink("Test", "Index", "tempController")   <br />
+    @Html.ActionLink("EmployeesTest/Index", "Index", "EmployeesTest")
 </div>
+
+<!--get help from Garret or Ricky  -->

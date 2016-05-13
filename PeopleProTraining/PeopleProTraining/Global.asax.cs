@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PeopleProTraining.Controllers;
+using PeopleProTraining.Dal.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +13,14 @@ namespace PeopleProTraining
     {
         protected void Application_Start()
         {
+
+            var tempController = new EmployeesTestController(new PeopleProRepo());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+
+            //tempController.Index();
+
         }
     }
 }

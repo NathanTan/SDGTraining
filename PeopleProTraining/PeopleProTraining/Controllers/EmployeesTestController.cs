@@ -23,6 +23,7 @@ namespace PeopleProTraining.Controllers
 
         public EmployeesTestController(PeopleProRepo peopleProRepo)
         {
+
             this.peopleProRepo = peopleProRepo;
         }
 
@@ -30,6 +31,8 @@ namespace PeopleProTraining.Controllers
         // GET: EmployeesTest
         public ActionResult Index()
         {
+
+            //var cheating = new PeopleProRepo();
             IEnumerable<Employee> employees = m_repo.GetAllEmployees();
 
          //   var employees = m_repo.GetAllEmployees();

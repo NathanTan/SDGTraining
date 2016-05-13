@@ -13,11 +13,30 @@ namespace PeopleProTraining
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+
+            /*
+        routes.MapRoute(
+            name: "Hello",
+            url: "{controller}/{action}",
+           new { controller = "EmployeeTest", action = "Welcome" }
+            );
+                */
+            routes.MapRoute( 
+                name: "EmployeesTest",
+                url: "EmployeesTest/Index", 
+                defaults: new { controller = "EmployeesTest", action = "Index" }
+);
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
+
+        
+
+
         }
+
     }
 }
