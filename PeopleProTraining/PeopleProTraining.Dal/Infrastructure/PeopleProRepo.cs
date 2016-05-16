@@ -59,6 +59,10 @@ namespace PeopleProTraining.Dal.Infrastructure
 
         public void UpdateEmployee(Employee employee)
         {
+           // Employee temp = employee;
+           // DeleteEmployee(employee);
+
+
             p_context.Employees.Add(employee);
             p_context.SaveChanges();
         }
@@ -230,6 +234,11 @@ namespace PeopleProTraining.Dal.Infrastructure
                     p_disposed = true;
                 }
             }
+        }
+
+        public static implicit operator PeopleProRepo(Employee v)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

@@ -87,9 +87,19 @@ namespace PeopleProTraining.Controllers
         }
 
         // GET: Department/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Department department = m_repo.GetDepartmentById(id.Value);
+            if (department == null)
+            {
+                return HttpNotFound();
+            }
+          //  ViewBag.DepartmentId = new SelectList(m_repo.GetAllDepartments(), "Id", "Name", employee.DepartmentId);
+            return View(department);
         }
 
         // POST: Department/Edit/5

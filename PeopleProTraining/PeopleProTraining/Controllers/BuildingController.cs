@@ -93,9 +93,19 @@ namespace PeopleProTraining.Controllers
         }
 
         // GET: Building/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Building building = m_repo.GetBuildingById(id.Value);
+            if (building == null)
+            {
+                return HttpNotFound();
+            }
+//ViewBag.DepartmentId = new SelectList(m_repo.GetAllDepartments(), "Id", "Name", employee.DepartmentId);
+            return View(building);
         }
 
         // POST: Building/Edit/5

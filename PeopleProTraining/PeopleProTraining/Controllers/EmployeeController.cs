@@ -3,6 +3,7 @@ using PeopleProTraining.Dal.Interfaces;
 using PeopleProTraining.Dal.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -89,9 +90,19 @@ namespace PeopleProTraining.Controllers
         }
 
         // GET: Employee/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = m_repo.GetEmployee(id.Value);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.DepartmentId = new SelectList(m_repo.GetAllDepartments(), "Id", "Name", employee.DepartmentId);
+            return View(employee);
         }
 
         // POST: Employee/Edit/5
@@ -101,7 +112,11 @@ namespace PeopleProTraining.Controllers
             try
             {
                 // TODO: Add update logic here
+
                 m_repo.UpdateEmployee(employee);
+
+                m_repo.DeleteEmployee(m_repo.GetEmployeeById(id));     //magic line of workingness
+
                 return RedirectToAction("Index");
             }
             catch
