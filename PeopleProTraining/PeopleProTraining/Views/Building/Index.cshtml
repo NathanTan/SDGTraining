@@ -23,10 +23,11 @@
     {
         <tr>
             <td>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayFor(modelItem => item.Name)
+               
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

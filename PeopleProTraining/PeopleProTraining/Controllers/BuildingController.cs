@@ -4,6 +4,7 @@ using PeopleProTraining.Dal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -47,9 +48,21 @@ namespace PeopleProTraining.Controllers
         }*/
 
         // GET: Building/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);       
+            }
+
+            Building building = m_repo.GetBuildingById(id.Value);
+            if (building == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(building);
+
         }
 
         // GET: Building/Create
@@ -106,9 +119,22 @@ namespace PeopleProTraining.Controllers
         }
 
         // GET: Building/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+        public ActionResult Delete(int? id)     
+        {     
+            if (id == null)
+
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);    
+            }    
+
+            Building building = m_repo.GetBuildingById(id.Value);
+
+            if (building == null)
+            {
+                return HttpNotFound();    
+            }
+
+            return View(building);
         }
 
         // POST: Building/Delete/5

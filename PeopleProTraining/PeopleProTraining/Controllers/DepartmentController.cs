@@ -4,6 +4,7 @@ using PeopleProTraining.Dal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -41,9 +42,22 @@ namespace PeopleProTraining.Controllers
 
 
         // GET: Department/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+        public ActionResult Details(int? id)
+        {          
+            if (!id.HasValue)   
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }  
+
+            Department department = m_repo.GetDepartmentById(id.Value);
+            if (department == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(department);
+
         }
 
         // GET: Department/Create
@@ -95,9 +109,20 @@ namespace PeopleProTraining.Controllers
         }
 
         // GET: Department/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)   
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Department department = m_repo.GetDepartmentById(id.Value);             
+            if (department == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(department);
         }
 
         // POST: Department/Delete/5

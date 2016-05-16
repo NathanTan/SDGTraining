@@ -4,6 +4,7 @@ using PeopleProTraining.Dal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,16 +13,16 @@ namespace PeopleProTraining.Controllers
     public class EmployeeController : Controller
     {
         private IPeopleProRepo m_repo;
-       // private PeopleProRepo peopleProRepo;
+        // private PeopleProRepo peopleProRepo;
         public EmployeeController() : this(new PeopleProRepo()) { }
         public EmployeeController(IPeopleProRepo repo)
         {
             m_repo = repo;
         }
-   /*     public EmployeeController(PeopleProRepo peopleProRepo)
-        {
-            this.peopleProRepo = peopleProRepo;
-        }            */
+        /*     public EmployeeController(PeopleProRepo peopleProRepo)
+             {
+                 this.peopleProRepo = peopleProRepo;
+             }            */
         // GET: Employee
         public ActionResult Index()
         {
@@ -35,21 +36,28 @@ namespace PeopleProTraining.Controllers
 
             //paginate buildings, what if there are 10000, do we want the user to scroll through all of that?
             //look up IPagedList<T>
-            //int pageSize = 5;
-           // int pageIndex = 1;
-           // pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
-
-           // employees.OrderBy(b => b.Id).OrderBy(b => b.FirstName);
-
-           // sortOrder = String.IsNullOrEmpty(sortOrder) ? "Id" : sortOrder;
 
             return View(employees.ToList());
         }
 
         // GET: Employee/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
+        // {
+        //      return View();
+        //  }
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Employee employee = m_repo.GetEmployee(id.Value);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(employee);
         }
 
         // GET: Employee/Create
@@ -103,9 +111,20 @@ namespace PeopleProTraining.Controllers
         }
 
         // GET: Employee/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)    
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Employee employee = m_repo.GetEmployee(id.Value);     
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(employee);
         }
 
         // POST: Employee/Delete/5
