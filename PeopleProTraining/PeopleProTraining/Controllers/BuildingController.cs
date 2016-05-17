@@ -118,7 +118,8 @@ namespace PeopleProTraining.Controllers
                 m_repo.UpdateBuilding(building);
                 //add building
                 //delete building
-                
+
+                m_repo.DeleteBuilding(m_repo.GetBuildingById(id));
 
                 return RedirectToAction("Index");
             }
@@ -147,22 +148,15 @@ namespace PeopleProTraining.Controllers
             return View(building);
         }
 
-        // POST: Building/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, Building building)
+        // POST: EmployeesTest/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                    m_repo.DeleteBuilding(building);
-                
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Building building = m_repo.GetBuildingById(id);
+            m_repo.DeleteBuilding(building);
+            m_repo.SaveBuilding(building);
+            return RedirectToAction("Index");
         }
     }
 }

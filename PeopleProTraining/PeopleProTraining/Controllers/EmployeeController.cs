@@ -143,8 +143,8 @@ namespace PeopleProTraining.Controllers
         }
 
         // POST: Employee/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, Employee employee)
+     //   [HttpPost]
+     /*   public ActionResult Delete(int id, Employee employee)
         {
             try
             {
@@ -157,5 +157,24 @@ namespace PeopleProTraining.Controllers
                 return View();
             }
         }
+              */
+
+
+        // POST: EmployeesTest/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            //         Employee employee = db.Employees.Find(id);
+            Employee employee = m_repo.GetEmployee(id);
+            m_repo.DeleteEmployee(employee);
+            m_repo.SaveEmployee(employee);
+            //       db.Employees.Remove(employee);
+            //    db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

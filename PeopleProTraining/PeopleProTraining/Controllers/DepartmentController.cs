@@ -110,6 +110,9 @@ namespace PeopleProTraining.Controllers
             {
                 // TODO: Add update logic here
                 m_repo.UpdateDepartment(department);
+
+                m_repo.DeleteDepartment(m_repo.GetDepartmentById(id));
+
                 return RedirectToAction("Index");
             }
             catch
@@ -135,20 +138,19 @@ namespace PeopleProTraining.Controllers
             return View(department);
         }
 
-        // POST: Department/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, Department department)
+
+        // POST: EmployeesTest/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-                m_repo.DeleteDepartment(department);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //         Employee employee = db.Employees.Find(id);
+            Department department = m_repo.GetDepartmentById(id);
+            m_repo.DeleteDepartment(department);
+            m_repo.SaveDepartment(department);
+            //       db.Employees.Remove(employee);
+            //    db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
